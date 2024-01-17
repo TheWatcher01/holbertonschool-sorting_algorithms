@@ -35,7 +35,7 @@ static void swap(int *array, int i, int j)
  * Return: The index of the pivot in the partitioned array.
  */
 
-int lomuto_partition(int *array, int low, int high, size_t size)
+static int lomuto_partition(int *array, int low, int high, size_t size)
 {
 	/* Initialize pivot as the last element in the array */
 	int pivot = array[high], i = (low - 1), j;
@@ -78,7 +78,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
  *
  * Return: This function does not return a value.
  */
-void quick_sort_helper(int *array, int low, int high, size_t size)
+static void quick_sort_helper(int *array, int low, int high, size_t size)
 {
 	/* If the low index is less than the high index */
 	if (low < high)
