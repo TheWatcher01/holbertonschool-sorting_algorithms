@@ -1,6 +1,24 @@
 #include "sort.h"
 
 /**
+ * swap - Swaps two integers in an array.
+ * @array: The array containing the integers.
+ * @i: The index of the first integer to be swapped.
+ * @j: The index of the second integer to be swapped.
+ *
+ * Return: This function does not return a value.
+ */
+static void swap(int *array, int i, int j)
+{
+	/* Store the value at index i in a temporary variable */
+	int temp = array[i];
+	/* Assign the value at index j to index i */
+	array[i] = array[j];
+	/* Assign the value stored in the temporary variable to index j */
+	array[j] = temp;
+}
+
+/**
  * lomuto_partition - Partitions a portion of an array using the Lomuto
  *                    partition scheme.
  * @array: Pointer to the array of integers to be partitioned.
@@ -8,7 +26,7 @@
  * @high: The high index of the portion to be partitioned.
  * @size: The size of the array.
  *
- * Description: The function selects the element at the high index as pivot,
+ * Description: Function selects the element at the high index as pivot,
  *              then rearranges array so that all elements less than or equal
  *              to the pivot come before pivot, and all elements greater than
  *              the pivot come after it. Function returns the index of the
@@ -19,32 +37,26 @@
 
 int lomuto_partition(int *array, int low, int high, size_t size)
 {
-	/* Declare variables for pivot, i: index of smaller element, y: loop index,*/
-	/* and temporary storage for swap 2 array item */
-	int pivot = array[high], i = (low - 1), j, temp;
+	/* Initialize pivot as the last element in the array */
+	int pivot = array[high], i = (low - 1), j;
 
 	/* Loop through the array from the low index to the high index */
 	for (j = low; j <= high - 1; j++)
 	{
-		/* If the current element is less than or equal to the pivot */
+		/* If current element is less than or equal to the pivot */
 		if (array[j] <= pivot)
 		{
 			/* Increment the index of the smaller element */
 			i++;
 			/* Swap the current element with the element at index of smaller element */
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-
+			swap(array, i, j);
 			/* If current element is not at index of smaller element, print the array */
 			if (i != j)
 				print_array(array, size);
 		}
 	}
 	/* Swap the element at the index of the smaller element plus one with pivot */
-	temp = array[i + 1];
-	array[i + 1] = array[high];
-	array[high] = temp;
+	swap(array, i + 1, high);
 	/* If the pivot is not at index of smaller element plus one, print array */
 	if (high != (i + 1))
 		print_array(array, size);
@@ -52,7 +64,6 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 	/* Return the index of the pivot */
 	return (i + 1);
 }
-
 
 /**
  * quick_sort_helper - Helper function that sorts a portion of an array.
