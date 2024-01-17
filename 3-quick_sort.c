@@ -1,59 +1,6 @@
 #include "sort.h"
 
 /**
- * quick_sort - Sorts an array of integers in ascending order
- *              using the Quick sort algorithm.
- * @array: Pointer to the array of integers to be sorted.
- * @size: The size of the array.
- *
- * Description: If the array is null or the size of the array is less than 2,
- *              the function returns without making any changes. The function
- *              calls a helper function to sort the array.
- *
- * Return: This function does not return a value.
- */
-void quick_sort(int *array, size_t size)
-{
-	/* If the array is null or the size of the array is less than 2, return */
-	if (!array || size < 2)
-		return;
-
-	/* Declare variables for the low and high indices */
-	int low = 0, high = size - 1;
-
-	/* Call the helper function to sort the array */
-	quick_sort_helper(array, low, high, size);
-}
-
-/**
- * quick_sort_helper - Helper function that sorts a portion of an array.
- * @array: Pointer to the array of integers to be sorted.
- * @low: The low index of the portion to be sorted.
- * @high: The high index of the portion to be sorted.
- * @size: The size of the array.
- *
- * Description: If the low index is less than the high index, the function
- *              selects a pivot using the Lomuto partition scheme, then
- *              recursively sorts the elements before and after the pivot.
- *
- * Return: This function does not return a value.
- */
-void quick_sort_helper(int *array, int low, int high, size_t size)
-{
-	/* If the low index is less than the high index */
-	if (low < high)
-	{
-		/* Select a pivot using the Lomuto partition scheme */
-		int pivot = lomuto_partition(array, low, high, size);
-
-		/* Recursively sort the elements before the pivot */
-		quick_sort_helper(array, low, pivot - 1, size);
-		/* Recursively sort the elements after the pivot */
-		quick_sort_helper(array, pivot + 1, high, size);
-	}
-}
-
-/**
  * lomuto_partition - Partitions a portion of an array using the Lomuto
  *                    partition scheme.
  * @array: Pointer to the array of integers to be partitioned.
@@ -69,6 +16,7 @@ void quick_sort_helper(int *array, int low, int high, size_t size)
  *
  * Return: The index of the pivot in the partitioned array.
  */
+
 int lomuto_partition(int *array, int low, int high, size_t size)
 {
 	/* Declare variables for pivot, i: index of smaller element, y: loop index,*/
@@ -103,4 +51,60 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 
 	/* Return the index of the pivot */
 	return (i + 1);
+}
+
+
+/**
+ * quick_sort_helper - Helper function that sorts a portion of an array.
+ * @array: Pointer to the array of integers to be sorted.
+ * @low: The low index of the portion to be sorted.
+ * @high: The high index of the portion to be sorted.
+ * @size: The size of the array.
+ *
+ * Description: If the low index is less than the high index, the function
+ *              selects a pivot using the Lomuto partition scheme, then
+ *              recursively sorts the elements before and after the pivot.
+ *
+ * Return: This function does not return a value.
+ */
+void quick_sort_helper(int *array, int low, int high, size_t size)
+{
+	/* If the low index is less than the high index */
+	if (low < high)
+	{
+		/* Select a pivot using the Lomuto partition scheme */
+		int pivot = lomuto_partition(array, low, high, size);
+
+		/* Recursively sort the elements before the pivot */
+		quick_sort_helper(array, low, pivot - 1, size);
+		/* Recursively sort the elements after the pivot */
+		quick_sort_helper(array, pivot + 1, high, size);
+	}
+}
+
+
+/**
+ * quick_sort - Sorts an array of integers in ascending order
+ *              using the Quick sort algorithm.
+ * @array: Pointer to the array of integers to be sorted.
+ * @size: The size of the array.
+ *
+ * Description: If the array is null or the size of the array is less than 2,
+ *              the function returns without making any changes. The function
+ *              calls a helper function to sort the array.
+ *
+ * Return: This function does not return a value.
+ */
+
+void quick_sort(int *array, size_t size)
+{
+	/* If the array is null or the size of the array is less than 2, return */
+	if (!array || size < 2)
+		return;
+
+	/* Declare variables for the low and high indices */
+	int low = 0, high = size - 1;
+
+	/* Call the helper function to sort the array */
+	quick_sort_helper(array, low, high, size);
 }

@@ -24,8 +24,7 @@ void bubble_sort(int *array, size_t size)
 		return;
 
 	/* Repeat until no more swaps are made */
-	do
-	{
+	do {
 		/* Reset the swapped flag */
 		swapped = 0;
 
