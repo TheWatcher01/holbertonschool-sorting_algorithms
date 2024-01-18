@@ -8,7 +8,7 @@
  *
  * Return: This function does not return a value.
  */
-static void swap(int *array, int i, int j)
+void swap(int *array, size_t i, size_t j)
 {
 	/* Store the value at index i in a temporary variable */
 	int temp = array[i];

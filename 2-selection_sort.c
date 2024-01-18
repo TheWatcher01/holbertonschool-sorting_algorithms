@@ -6,7 +6,7 @@
  * @i: Index of first element.
  * @j: Index of second element.
  */
-static void swap(int *array, size_t i, size_t j)
+void swap(int *array, size_t i, size_t j)
 {
 	/* Temporary variable stores value at index i */
 	int temp = array[i];

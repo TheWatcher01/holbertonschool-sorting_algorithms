@@ -34,8 +34,8 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 
-/*____________________Aux Privates Functions Prototypes____________________*/
-
+/*____________________Auxiliaries Functions Prototypes____________________*/
+void swap(int *array, size_t i, size_t j);
 
 /*____________________Functions Prototypes Advanced Task____________________*/
 
