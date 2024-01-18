@@ -1,4 +1,3 @@
-/* Include header file */
 #include "sort.h"
 
 /**
@@ -46,16 +45,16 @@ void bubble_sort(int *array, size_t size)
 		/* Loop through array */
 		for (i = 0; i < size - 1; i++)
 		{
-			/* If current element is greater than next one */
-			if (array[i] > array[i + 1])
-			{
-				/* Swap elements */
-				swap(array, i, i + 1);
-				/* Set swapped flag to 1 */
-				swapped = 1;
-				/* Print array after swap */
-				print_array(array, size);
-			}
+			/* If current element is less than or equal to next one, continue to next iteration */
+			if (array[i] <= array[i + 1])
+				continue;
+
+			/* Swap elements */
+			swap(array, i, i + 1);
+			/* Set swapped flag to 1 */
+			swapped = 1;
+			/* Print array after swap */
+			print_array(array, size);
 		}
 		/* Continue if a swap was made */
 	} while (swapped);
