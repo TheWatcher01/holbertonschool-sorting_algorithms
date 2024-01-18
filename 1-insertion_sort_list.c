@@ -5,8 +5,9 @@
  * @list: Pointer to doubly linked list.
  * @node: Node to be moved.
  *
- * Description: Detaches node from current position and inserts it before
- *              previous node. If node is now first node, list pointer is updated.
+ * Description:
+ * Detaches node from current position and inserts it before
+ * previous node. If node is now first node, list pointer is updated.
  */
 static void move_node(listint_t **list, listint_t *node)
 {
@@ -88,3 +89,4 @@ void insertion_sort_list(listint_t **list)
 		}
 	}
 }
+
